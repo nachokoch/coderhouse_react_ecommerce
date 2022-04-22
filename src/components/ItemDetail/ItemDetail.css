@@ -1,0 +1,7 @@
+@media only screen and (min-width:1240px) {
+    .itemDetail-img{
+        width: 500px;
+        height: 600px;
+        object-fit: contain;
+    }
+}
