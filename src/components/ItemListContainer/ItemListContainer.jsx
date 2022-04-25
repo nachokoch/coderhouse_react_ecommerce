@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import {fakeAPI} from '../../helpers/fakeAPI'
+// import {fakeAPI} from '../../helpers/fakeAPI'
 import ItemList from '../ItemList/ItemList'
+import {db} from "../../firebase/firebase"
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 
 function ItemListContainer() {
@@ -11,20 +13,37 @@ function ItemListContainer() {
 
     const { idCategory } = useParams()
 
-    useEffect(() => {
+    console.log(db)
 
-        if (idCategory) {            
-            fakeAPI
-            .then(resp => setProductos(resp.filter(prod => prod.category === idCategory)))
-            .catch(err => console.error(err))
+    useEffect(() => {
+        const db = getFirestore();
+        if (idCategory) {
+            const queryCollectionCategory = query(collection(db, 'productos'), where('category', '==', idCategory) )
+            getDocs(queryCollectionCategory)
+            .then(resp => setProductos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
             .finally(() => setLoading(false))
         } else {
-            fakeAPI
-            .then(resp => setProductos(resp))
-            .catch(err => console.error(err))
+            const queryCollection = collection(db, 'productos')
+            getDocs(queryCollection)
+            .then(resp => setProductos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
             .finally(() => setLoading(false))
-        }
+        }  
     }, [idCategory])
+
+    // useEffect(() => {
+
+    //     if (idCategory) {            
+    //         fakeAPI
+    //         .then(resp => setProductos(resp.filter(prod => prod.category === idCategory)))
+    //         .catch(err => console.error(err))
+    //         .finally(() => setLoading(false))
+    //     } else {
+    //         fakeAPI
+    //         .then(resp => setProductos(resp))
+    //         .catch(err => console.error(err))
+    //         .finally(() => setLoading(false))
+    //     }
+    // }, [idCategory])
 
 
 

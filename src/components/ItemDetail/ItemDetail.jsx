@@ -20,7 +20,7 @@ function ItemDetail({producto}) {
         <div key={producto.id} className="container mt-5">
             <div className="row justify-content-center text-left align-items-center">
                 <div className="col-lg-6 col-md-12 col-sm-12 pb-5">  
-                    <img src={producto.img} className="itemDetail-img"></img>
+                    <img src={producto.image} className="itemDetail-img"></img>
                 </div>
                 <div className="col-lg-6 col-md-12 col-sm-12">
                     <h3 className="fw-bold">{producto.name}</h3>

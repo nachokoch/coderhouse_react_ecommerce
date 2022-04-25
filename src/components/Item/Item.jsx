@@ -5,9 +5,9 @@ function Item({prod}) {
 	return (
 		<div className='col-md-4'>
             <div className="card mt-5">
-                <img src={prod.img} className="card-img-top card-img-products" alt={prod.name}/>
+                <img src={prod.image} className="card-img-top card-img-products" alt={prod.name}/>
                 <div className="card-body text-center">
-                    <h4 className="card-title">{prod.name}</h4>
+                    <h4 className="card-title">{prod.title}</h4>
                     <h5 className="card-text">${prod.price}</h5>
                 </div>
                 <div className="card-footer text-center">
