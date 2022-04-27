@@ -30,22 +30,7 @@ function ItemListContainer() {
         }  
     }, [idCategory])
 
-    // useEffect(() => {
-
-    //     if (idCategory) {            
-    //         fakeAPI
-    //         .then(resp => setProductos(resp.filter(prod => prod.category === idCategory)))
-    //         .catch(err => console.error(err))
-    //         .finally(() => setLoading(false))
-    //     } else {
-    //         fakeAPI
-    //         .then(resp => setProductos(resp))
-    //         .catch(err => console.error(err))
-    //         .finally(() => setLoading(false))
-    //     }
-    // }, [idCategory])
-
-
+  
 
     return (
         <div>           

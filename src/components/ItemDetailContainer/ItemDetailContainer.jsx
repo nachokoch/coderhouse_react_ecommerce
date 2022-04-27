@@ -7,13 +7,7 @@ import { doc, getDoc, getFirestore } from 'firebase/firestore'
 function ItemDetailContainer() {
 
     const {idProduct} = useParams()
-    const [producto, setProducto] = useState([])
-
-    // useEffect(() => {
-    //     fakeAPI
-    //     .then(resp => setProducto(resp.find(prod => prod.id === idProduct)))
-    //     .catch(err => console.error(err))
-    // }, [idProduct])
+    const [producto, setProducto] = useState([])    
 
     useEffect(() => {
         const db = getFirestore()
